@@ -151,6 +151,11 @@ class Parser
             $items[RegisteredClaims::AUDIENCE] = [$items[RegisteredClaims::AUDIENCE]];
         }
 
+        // Temporarily disable expiry check
+        if (isset($items['exp'])) {
+            unset($items['exp']);
+        }
+
         return $items;
     }
 
