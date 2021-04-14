@@ -132,6 +132,10 @@ class Parser
         foreach ($claims as $name => &$value) {
             $value = $this->claimFactory->create($name, $value);
         }
+        // Temporarily disable expiry check
+        if (isset($claims['exp'])) {
+            unset($claims['exp']);
+        }
 
         return $claims;
     }
